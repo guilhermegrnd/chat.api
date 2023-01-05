@@ -1,4 +1,4 @@
-# fullstack-api
+# chat-api
 
 Web Api Just to Practice Web Development with the dotnet core technologies.
 
