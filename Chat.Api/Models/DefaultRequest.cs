@@ -1,4 +1,4 @@
-﻿namespace Fullstack.API.Models
+﻿namespace Chat.API.Models
 {
     public class DefaultResult<T>
     {

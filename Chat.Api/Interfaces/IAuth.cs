@@ -1,7 +1,7 @@
-﻿using Fullstack.API.Models;
+﻿using Chat.API.Models;
 using System.Security.Claims;
 
-namespace Fullstack.API.Interfaces
+namespace Chat.API.Interfaces
 {
     public interface IAuth
     {

@@ -1,4 +1,4 @@
-﻿using Fullstack.API.Models;
+﻿using Chat.API.Models;
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Text;

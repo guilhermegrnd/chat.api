@@ -1,6 +1,6 @@
-using Fullstack.API.Data;
-using Fullstack.API.Interfaces;
-using Fullstack.API.Services;
+using Chat.API.Data;
+using Chat.API.Interfaces;
+using Chat.API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;

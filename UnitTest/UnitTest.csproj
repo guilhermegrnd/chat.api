@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Fullstack.API\Chat.Api.csproj" />
+    <ProjectReference Include="..\Chat.Api\Chat.Api.csproj" />
   </ItemGroup>
 
 </Project>

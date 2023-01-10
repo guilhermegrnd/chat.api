@@ -1,10 +1,10 @@
-﻿using Fullstack.API.Data;
-using Fullstack.API.Interfaces;
-using Fullstack.API.Models;
+﻿using Chat.API.Data;
+using Chat.API.Interfaces;
+using Chat.API.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Transactions;
 
-namespace Fullstack.API.Services
+namespace Chat.API.Services
 {
     public class ChatService : IChat
     {

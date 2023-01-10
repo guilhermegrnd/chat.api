@@ -1,6 +1,6 @@
-﻿using Fullstack.API.Models;
+﻿using Chat.API.Models;
 
-namespace Fullstack.API.Interfaces
+namespace Chat.API.Interfaces
 {
     public interface IUsers
     {

@@ -1,7 +1,7 @@
-﻿using Fullstack.API.Models;
+﻿using Chat.API.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Fullstack.API.Data
+namespace Chat.API.Data
 {
     public class DataContext : DbContext
     {

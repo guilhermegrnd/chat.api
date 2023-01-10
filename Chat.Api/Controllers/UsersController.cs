@@ -1,11 +1,11 @@
-﻿using Fullstack.API.Interfaces;
-using Fullstack.API.Models;
+﻿using Chat.API.Interfaces;
+using Chat.API.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
-namespace Fullstack.API.Controllers
+namespace Chat.API.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]

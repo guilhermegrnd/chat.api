@@ -1,7 +1,7 @@
-﻿using Fullstack.API.Data;
-using Fullstack.API.Interfaces;
-using Fullstack.API.Models;
-using Fullstack.API.Utils;
+﻿using Chat.API.Data;
+using Chat.API.Interfaces;
+using Chat.API.Models;
+using Chat.API.Utils;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -9,7 +9,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Transactions;
 
-namespace Fullstack.API.Services
+namespace Chat.API.Services
 {
     public class AuthService : IAuth
     {

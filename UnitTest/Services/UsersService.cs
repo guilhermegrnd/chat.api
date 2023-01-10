@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
-using Fullstack.API.Controllers;
-using Fullstack.API.Interfaces;
-using Fullstack.API.Models;
-using Fullstack.API.Services;
+using Chat.API.Controllers;
+using Chat.API.Interfaces;
+using Chat.API.Models;
+using Chat.API.Services;
 using Moq;
 using System;
 using System.Collections.Generic;

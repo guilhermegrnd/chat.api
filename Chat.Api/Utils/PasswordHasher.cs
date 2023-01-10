@@ -1,9 +1,9 @@
-﻿using Fullstack.API.Data;
+﻿using Chat.API.Data;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Fullstack.API.Utils
+namespace Chat.API.Utils
 {
     public class PasswordHasher
     {

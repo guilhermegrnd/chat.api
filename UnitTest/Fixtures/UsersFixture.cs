@@ -1,4 +1,4 @@
-﻿using Fullstack.API.Models;
+﻿using Chat.API.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
