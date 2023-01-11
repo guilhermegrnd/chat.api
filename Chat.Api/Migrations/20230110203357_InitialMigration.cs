@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Fullstack.API.Migrations
+namespace Chat.Api.Migrations
 {
     public partial class InitialMigration : Migration
     {
@@ -71,18 +71,6 @@ namespace Fullstack.API.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Messages_ToUserId",
-                table: "Messages",
-                column: "ToUserId",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Messages_UserId",
-                table: "Messages",
-                column: "UserId",
-                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

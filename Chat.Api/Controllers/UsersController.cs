@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using System.Security.Claims;
 
 namespace Chat.API.Controllers
 {
@@ -15,20 +16,20 @@ namespace Chat.API.Controllers
     {
         private readonly ILogger<UsersController> _logger;
         private readonly IUsers _users;
+        private readonly IAuth _auth;
 
-        public UsersController(ILogger<UsersController> logger, IUsers users)
+        public UsersController(ILogger<UsersController> logger, IUsers users, IAuth auth)
         {
             _users = users;
             _logger = logger;
+            _auth = auth;
         }
 
         [HttpGet]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-        public async Task<IActionResult> GetAllUsers()
-        {
+        public async Task<IActionResult> GetAllUsers() {
             var defaultResult = new DefaultResult<List<User>>();
-            try
-            {
+            try {
                 _logger.LogInformation($"Endpoint GET api/v1/[controller] started run.");
                 defaultResult.Data = await _users.GetAll();
                 defaultResult.Success = true;
@@ -37,11 +38,32 @@ namespace Chat.API.Controllers
 
                 return StatusCode((int)HttpStatusCode.OK, defaultResult);
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 defaultResult.Message += $"Some server error has happened. Call the system administrator.";
                 _logger.LogError(ex, "An error occurred");
                 _logger.LogInformation($"Endpoint GET api/v1/[controller] ended run with system error.");
+                return StatusCode((int)HttpStatusCode.InternalServerError, defaultResult);
+            }
+        }
+
+        [HttpGet]
+        [Route("loggeduserdata")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> GetLoggedUserData() {
+            var defaultResult = new DefaultResult<User>();
+            try {
+                _logger.LogInformation($"Endpoint GET api/v1/[controller]/loggeduserdata started run.");
+                defaultResult.Data = await _users.Get(await _auth.GetAuthenticatedUserId(HttpContext.User.Identity as ClaimsIdentity));
+                defaultResult.Success = true;
+                defaultResult.Message = "Data Retrieved Successfully";
+                _logger.LogInformation($"Endpoint GET api/v1/[controller]/loggeduserdata ended run.");
+
+                return StatusCode((int)HttpStatusCode.OK, defaultResult);
+            }
+            catch (Exception ex) {
+                defaultResult.Message += $"Some server error has happened. Call the system administrator.";
+                _logger.LogError(ex, "An error occurred");
+                _logger.LogInformation($"Endpoint GET api/v1/[controller]/loggeduserdata ended run with system error.");
                 return StatusCode((int)HttpStatusCode.InternalServerError, defaultResult);
             }
         }

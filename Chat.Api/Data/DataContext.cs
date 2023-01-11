@@ -30,8 +30,8 @@ namespace Chat.API.Data
                 x.ToTable("Messages");
                 x.HasKey(a => a.Id);
                 x.Property(a => a.Id).ValueGeneratedOnAdd();
-                x.HasOne(a => a.User).WithOne().OnDelete(DeleteBehavior.Restrict);
-                x.HasOne(a => a.ToUser).WithOne().OnDelete(DeleteBehavior.Restrict);
+                x.HasOne(a => a.User).WithMany().OnDelete(DeleteBehavior.Restrict);
+                x.HasOne(a => a.ToUser).WithMany().OnDelete(DeleteBehavior.Restrict);
             });
 
             modelBuilder.Entity<RefreshToken>(x =>

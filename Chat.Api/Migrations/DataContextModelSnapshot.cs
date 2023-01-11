@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Fullstack.API.Migrations
+namespace Chat.Api.Migrations
 {
     [DbContext(typeof(DataContext))]
     partial class DataContextModelSnapshot : ModelSnapshot
@@ -22,7 +22,7 @@ namespace Fullstack.API.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Fullstack.API.Models.Message", b =>
+            modelBuilder.Entity("Chat.API.Models.Message", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -56,16 +56,14 @@ namespace Fullstack.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ToUserId")
-                        .IsUnique();
+                    b.HasIndex("ToUserId");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
                     b.ToTable("Messages", (string)null);
                 });
 
-            modelBuilder.Entity("Fullstack.API.Models.RefreshToken", b =>
+            modelBuilder.Entity("Chat.API.Models.RefreshToken", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -90,7 +88,7 @@ namespace Fullstack.API.Migrations
                     b.ToTable("RefreshTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Fullstack.API.Models.User", b =>
+            modelBuilder.Entity("Chat.API.Models.User", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -112,17 +110,17 @@ namespace Fullstack.API.Migrations
                     b.ToTable("Users", (string)null);
                 });
 
-            modelBuilder.Entity("Fullstack.API.Models.Message", b =>
+            modelBuilder.Entity("Chat.API.Models.Message", b =>
                 {
-                    b.HasOne("Fullstack.API.Models.User", "ToUser")
-                        .WithOne()
-                        .HasForeignKey("Fullstack.API.Models.Message", "ToUserId")
+                    b.HasOne("Chat.API.Models.User", "ToUser")
+                        .WithMany()
+                        .HasForeignKey("ToUserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Fullstack.API.Models.User", "User")
-                        .WithOne()
-                        .HasForeignKey("Fullstack.API.Models.Message", "UserId")
+                    b.HasOne("Chat.API.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 

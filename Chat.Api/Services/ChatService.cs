@@ -28,7 +28,8 @@ namespace Chat.API.Services
                     Text = message.Text,
                     Image = message.Image,
                     Reply = message.Reply,
-                    CreateAt = DateTime.UtcNow
+                    CreateAt = DateTime.UtcNow,
+                    Sent = true,
                 };
                 await _context.Messages.AddAsync(newMessage);
                 await _context.SaveChangesAsync();
@@ -83,7 +84,18 @@ namespace Chat.API.Services
                         && x.ToUserId == userId
                     )
                 )
-                .OrderByDescending(x => x.CreateAt)
+                .Select(x => new Message {
+                    Id = x.Id,
+                    CreateAt = x.CreateAt,
+                    Image = x.Image,
+                    Reply = x.Reply,
+                    Sent = x.UserId == ToUserId ? false : true,
+                    Text = x.Text,
+                    Type = x.Type,
+                    ToUserId = ToUserId,
+                    UserId = ToUserId
+                })
+                //.OrderByDescending(x => x.CreateAt)
                 .ToListAsync();
         }
 

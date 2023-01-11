@@ -21,7 +21,8 @@ namespace Chat.API.Services
             return await _context.Users
                 .Select(x => new User
                 {
-                    Name = x.Name
+                    Name = x.Name,
+                    Image = x.Image,
                 })
                 .ToListAsync();
         }
@@ -32,7 +33,8 @@ namespace Chat.API.Services
                 .Where(x => x.Id == id)
                 .Select(x => new User
                 {
-                    Name = x.Name
+                    Name = x.Name,
+                    Image = x.Image,
                 })
                 .FirstOrDefaultAsync();
         }
@@ -96,6 +98,7 @@ namespace Chat.API.Services
 
                 userUpdate.Password = hash;
                 userUpdate.Name = user.Name;
+                userUpdate.Image = user.Image;
 
                 await _context.SaveChangesAsync();
 
